@@ -25,4 +25,9 @@
  )
 
 (use-package helm
-	     :ensure t)
+  :ensure t
+  :bind (("C-x C-b" . helm-buffers-list)
+         ("M-x" . helm-M-x)
+	 ("C-x C-f" . helm-find-files)
+	 )
+  :init)
