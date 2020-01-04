@@ -16,13 +16,18 @@
  '(package-archives
    '(("melpa" . "https://melpa.org/packages/")
      ("gnu" . "https://elpa.gnu.org/packages/")))
- '(package-selected-packages '(evil helm use-package)))
+ '(package-selected-packages '(evil-magit magit evil helm use-package)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+
+
+(use-package magit
+  :ensure t
+  :init)
 
 ;; this is the way
 (use-package evil
@@ -31,6 +36,11 @@
   :config
   (evil-mode 1))
 
+(use-package evil-magit
+  :ensure t
+  :bind (([f12] . magit-status))
+  :init)
+
 (use-package helm
   :ensure t
   :bind (("C-x C-b" . helm-buffers-list)
@@ -38,3 +48,6 @@
 	 ("C-x C-f" . helm-find-files)
 	 )
   :init)
+
+
+
