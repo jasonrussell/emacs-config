@@ -46,6 +46,7 @@
   :bind (("C-x C-b" . helm-buffers-list)
          ("M-x" . helm-M-x)
 	 ("C-x C-f" . helm-find-files)
+	 ("C-h a" . helm-apropos)
 	 )
   :init)
 
