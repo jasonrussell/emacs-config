@@ -51,4 +51,8 @@
   :init)
 
 
+;; persist sessions
+(desktop-save-mode 1)
 
+;; exclude backup files
+(setq make-backup-files nil)
