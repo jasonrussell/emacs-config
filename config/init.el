@@ -51,6 +51,9 @@
 	 )
   :init)
 
+(use-package helm-org
+  :ensure t
+  :init)
 
 ;; persist sessions
 (desktop-save-mode 1)
