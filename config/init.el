@@ -47,6 +47,7 @@
          ("M-x" . helm-M-x)
 	 ("C-x C-f" . helm-find-files)
 	 ("C-h a" . helm-apropos)
+	 ([f5] . helm-imenu)
 	 )
   :init)
 
