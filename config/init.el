@@ -16,7 +16,8 @@
  '(package-archives
    '(("melpa" . "https://melpa.org/packages/")
      ("gnu" . "https://elpa.gnu.org/packages/")))
- '(package-selected-packages '(evil-magit magit evil helm use-package)))
+ '(package-selected-packages
+   '(projectile helm-org evil-magit magit evil helm use-package)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -52,6 +53,10 @@
   :init)
 
 (use-package helm-org
+  :ensure t
+  :init)
+
+(use-package projectile
   :ensure t
   :init)
 
