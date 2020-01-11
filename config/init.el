@@ -56,6 +56,10 @@
   :ensure t
   :init)
 
+(use-package helm-projectile
+  :ensure t
+  :init)
+
 (use-package projectile
   :ensure t
   :init)
