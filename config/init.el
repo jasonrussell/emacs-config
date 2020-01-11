@@ -42,6 +42,10 @@
   :bind (([f12] . magit-status))
   :init)
 
+;; this is annoying in evil mode, unset it
+(global-unset-key (kbd "M-:"))
+(global-unset-key (kbd "M-ESC :"))
+
 (use-package helm
   :ensure t
   :bind (("C-x C-b" . helm-buffers-list)
