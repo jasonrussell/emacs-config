@@ -17,7 +17,7 @@
    '(("melpa" . "https://melpa.org/packages/")
      ("gnu" . "https://elpa.gnu.org/packages/")))
  '(package-selected-packages
-   '(projectile helm-org evil-magit magit evil helm use-package)))
+   '(helm-projectile projectile helm-org evil-magit magit evil helm use-package)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -58,6 +58,8 @@
 
 (use-package helm-projectile
   :ensure t
+  :bind (("C-c C-p f" . helm-projectile)
+         ("C-c C-p s" . helm-projectile-switch-project))
   :init)
 
 (use-package projectile
