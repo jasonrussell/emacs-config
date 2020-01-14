@@ -17,7 +17,7 @@
    '(("melpa" . "https://melpa.org/packages/")
      ("gnu" . "https://elpa.gnu.org/packages/")))
  '(package-selected-packages
-   '(company flycheck fly-check lsp-ui lsp-mode helm-projectile projectile helm-org evil-magit magit evil helm use-package)))
+   '(flycheck-rust toml-mode cargo rust company flycheck fly-check lsp-ui lsp-mode helm-projectile projectile helm-org evil-magit magit evil helm use-package)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -87,6 +87,8 @@
 	"--stdio"))
   ;; for python. Requires:
   ;; pip3 install python-language-server
+  ;; for rust. Requires rls
+  (setq lsp-rust-rls-server-command '("rls"))
 
   
   :ensure t
@@ -104,9 +106,28 @@
   :hook ((python-mode python-mode-hook) . lsp)
   :init)
 
+(use-package toml-mode
+  :ensure t)
+
+(use-package rust-mode
+  :ensure t
+  :hook (rust-mode . lsp)
+  :init)
+
+(add-to-list 'auto-mode-alist '("\\.rs\\'" . rust-mode))
+
+(use-package cargo
+  :ensure t
+  :diminish cargo-minor-mode
+  :hook (rust-mode . cargo-minor-mode))
+
 (use-package flycheck
   :ensure t
   :init)
+
+(use-package flycheck-rust
+  :ensure t
+  :config (add-hook 'flycheck-mode-hook #'flycheck-rust-setup))
 
 ;; requires flycheck
 (use-package lsp-ui
