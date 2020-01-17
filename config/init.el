@@ -17,7 +17,7 @@
    '(("melpa" . "https://melpa.org/packages/")
      ("gnu" . "https://elpa.gnu.org/packages/")))
  '(package-selected-packages
-   '(helm-swoop swoop yasnippet company-lsp company-go go-mode flycheck-rust toml-mode cargo rust company flycheck fly-check lsp-ui lsp-mode helm-projectile projectile helm-org evil-magit magit evil helm use-package)))
+   '(lsp-treemacs helm-lsp helm-swoop swoop yasnippet company-lsp company-go go-mode flycheck-rust toml-mode cargo rust company flycheck fly-check lsp-ui lsp-mode helm-projectile projectile helm-org evil-magit magit evil helm use-package)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -75,6 +75,10 @@
          ("C-c C-p s" . helm-projectile-switch-project))
   :init)
 
+(use-package helm-lsp
+  :ensure t
+  :init)
+
 (use-package projectile
   :ensure t
   :init)
@@ -103,6 +107,10 @@
   (setq lsp-rust-rls-server-command '("rls"))
 
   
+  :ensure t
+  :init)
+
+(use-package lsp-treemacs
   :ensure t
   :init)
 
