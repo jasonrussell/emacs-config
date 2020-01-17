@@ -142,9 +142,12 @@
 (use-package go-mode
   :ensure t
   :config 
+  (setq gofmt-command "goimports")
   (setq compile-command "go build -v && go test -v && go vet")
   :bind ("C-c C-c" . compile)
-  :hook (go-mode . lsp))
+  :hook (go-mode . lsp)
+  :init
+  (add-hook 'before-save-hook 'gofmt-before-save))
 
 (use-package company-go
   :ensure t
