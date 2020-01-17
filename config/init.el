@@ -17,7 +17,7 @@
    '(("melpa" . "https://melpa.org/packages/")
      ("gnu" . "https://elpa.gnu.org/packages/")))
  '(package-selected-packages
-   '(yasnippet company-lsp company-go go-mode flycheck-rust toml-mode cargo rust company flycheck fly-check lsp-ui lsp-mode helm-projectile projectile helm-org evil-magit magit evil helm use-package)))
+   '(helm-swoop swoop yasnippet company-lsp company-go go-mode flycheck-rust toml-mode cargo rust company flycheck fly-check lsp-ui lsp-mode helm-projectile projectile helm-org evil-magit magit evil helm use-package)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -46,6 +46,10 @@
 (global-unset-key (kbd "M-:"))
 (global-unset-key (kbd "M-ESC :"))
 
+(use-package swoop
+  :ensure t
+  :init)
+
 (use-package helm
   :ensure t
   :bind (("C-x C-b" . helm-buffers-list)
@@ -54,6 +58,11 @@
 	 ("C-h a" . helm-apropos)
 	 ([f5] . helm-imenu)
 	 )
+  :init)
+
+(use-package helm-swoop
+  :ensure t
+  :bind ("C-h C-s" . helm-multi-swoop-all)
   :init)
 
 (use-package helm-org
