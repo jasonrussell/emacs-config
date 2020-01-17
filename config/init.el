@@ -17,7 +17,7 @@
    '(("melpa" . "https://melpa.org/packages/")
      ("gnu" . "https://elpa.gnu.org/packages/")))
  '(package-selected-packages
-   '(flycheck-rust toml-mode cargo rust company flycheck fly-check lsp-ui lsp-mode helm-projectile projectile helm-org evil-magit magit evil helm use-package)))
+   '(company-lsp company-go go-mode flycheck-rust toml-mode cargo rust company flycheck fly-check lsp-ui lsp-mode helm-projectile projectile helm-org evil-magit magit evil helm use-package)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -85,6 +85,7 @@
 	"--tsProbeLocations"
 	"/usr/lib/node_modules"
 	"--stdio"))
+  (setq lsp-enable-completion-at-point t)
   ;; for python. Requires:
   ;; pip3 install python-language-server
   ;; for rust. Requires rls
@@ -96,10 +97,15 @@
 
 ;; autocompletion
 (use-package company
-  :bind (([tab] . company-complete)
-         ("TAB" . company-complete))
   :ensure t
+  :bind (([tab] . company-complete-common-or-cycle)
+         ("TAB" . company-complete-common-or-cycle))
+
   :init (global-company-mode))
+
+(use-package company-lsp
+  :ensure t
+  :init)
 
 (use-package python
   :ensure t
