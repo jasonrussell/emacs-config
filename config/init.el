@@ -17,7 +17,7 @@
    '(("melpa" . "https://melpa.org/packages/")
      ("gnu" . "https://elpa.gnu.org/packages/")))
  '(package-selected-packages
-   '(company-lsp company-go go-mode flycheck-rust toml-mode cargo rust company flycheck fly-check lsp-ui lsp-mode helm-projectile projectile helm-org evil-magit magit evil helm use-package)))
+   '(yasnippet company-lsp company-go go-mode flycheck-rust toml-mode cargo rust company flycheck fly-check lsp-ui lsp-mode helm-projectile projectile helm-org evil-magit magit evil helm use-package)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -73,7 +73,7 @@
 ;; Development
 ;; -----------
 (use-package lsp-mode
-  :commands (lsp company-mode)
+  :commands (lsp company-mode yas-minor-mode)
   :config
   ;; for angular. Requires:
   ;; npm install -g @angular/language-service@next typescript @angular/language-server
@@ -110,6 +110,11 @@
 (use-package python
   :ensure t
   :hook ((python-mode python-mode-hook) . lsp)
+  :init)
+
+;; this adds some smarter completion of arguments when paired with company
+(use-package yasnippet
+  :ensure t
   :init)
 
 (use-package toml-mode
