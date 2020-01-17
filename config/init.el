@@ -82,7 +82,7 @@
 ;; Development
 ;; -----------
 (use-package lsp-mode
-  :commands (lsp company-mode yas-minor-mode)
+  :commands (lsp company-mode yas-minor-mode projectile-mode)
   :bind (([f3] . lsp-find-definition)
 	 ([f4] . lsp-find-references))
   :config
