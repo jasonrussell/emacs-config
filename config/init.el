@@ -109,6 +109,17 @@
 (use-package toml-mode
   :ensure t)
 
+(use-package go-mode
+  :ensure t
+  :config 
+  (setq compile-command "go build -v && go test -v && go vet")
+  :bind ("C-c C-c" . compile)
+  :hook (go-mode . lsp))
+
+(use-package company-go
+  :ensure t
+  :init)
+
 (use-package rust-mode
   :ensure t
   :hook (rust-mode . lsp)
