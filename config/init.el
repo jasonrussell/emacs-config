@@ -74,6 +74,8 @@
 ;; -----------
 (use-package lsp-mode
   :commands (lsp company-mode yas-minor-mode)
+  :bind (([f3] . lsp-find-definition)
+	 ([f4] . lsp-find-references))
   :config
   ;; for angular. Requires:
   ;; npm install -g @angular/language-service@next typescript @angular/language-server
