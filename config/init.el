@@ -86,10 +86,12 @@
 ;; Development
 ;; -----------
 (use-package lsp-mode
-  :commands (lsp company-mode yas-minor-mode projectile-mode)
+  :commands (lsp company-mode projectile-mode)
   :bind (([f3] . lsp-find-definition)
 	 ([f4] . lsp-find-references))
   :config
+  (electric-pair-mode 1)
+  (yas-minor-mode 1)
   ;; for angular. Requires:
   ;; npm install -g @angular/language-service@next typescript @angular/language-server
   (setq lsp-clients-angular-language-server-command
