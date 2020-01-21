@@ -81,6 +81,7 @@
 
 (use-package projectile
   :ensure t
+  :bind ("C-c C-p t" . projectile-find-tag)
   :init)
 
 ;; Development
