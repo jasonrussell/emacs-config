@@ -138,6 +138,10 @@
   :ensure t
   :init)
 
+(use-package go-snippets
+  :ensure t
+  :init)
+
 (use-package toml-mode
   :ensure t)
 
