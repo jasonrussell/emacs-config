@@ -204,3 +204,10 @@
 
 ;; exclude backup files
 (setq make-backup-files nil)
+
+;; rely on terminal settings for background
+(defun on-after-init ()
+  (unless (display-graphic-p (selected-frame))
+    (set-face-background 'default "unspecified-bg" (selected-frame))))
+
+(add-hook 'window-setup-hook 'on-after-init)
