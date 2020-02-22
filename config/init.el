@@ -17,7 +17,7 @@
    '(("melpa" . "https://melpa.org/packages/")
      ("gnu" . "https://elpa.gnu.org/packages/")))
  '(package-selected-packages
-   '(treemacs-evil go-snippets lsp-treemacs helm-lsp helm-swoop swoop yasnippet company-lsp company-go go-mode flycheck-rust toml-mode cargo rust company flycheck fly-check lsp-ui lsp-mode helm-projectile projectile helm-org evil-magit magit evil helm use-package)))
+   '(org-mode treemacs-evil go-snippets lsp-treemacs helm-lsp helm-swoop swoop yasnippet company-lsp company-go go-mode flycheck-rust toml-mode cargo rust company flycheck fly-check lsp-ui lsp-mode helm-projectile projectile helm-org evil-magit magit evil helm use-package)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -45,6 +45,7 @@
 ;; this is annoying in evil mode, unset it
 (global-unset-key (kbd "M-:"))
 (global-unset-key (kbd "M-ESC :"))
+(global-set-key (kbd "C-c C-c") 'compile)
 
 (use-package swoop
   :ensure t
@@ -160,7 +161,6 @@
   :config 
   (setq gofmt-command "goimports")
   (setq compile-command "go build -v && go test -v && go vet")
-  :bind ("C-c C-c" . compile)
   :hook (go-mode . lsp)
   :init
   (add-hook 'before-save-hook 'gofmt-before-save))
@@ -211,3 +211,14 @@
     (set-face-background 'default "unspecified-bg" (selected-frame))))
 
 (add-hook 'window-setup-hook 'on-after-init)
+
+(with-eval-after-load 'evil
+  ;; use evil mode in the buffer created from calling `list-packages'.
+  (add-to-list 'evil-buffer-regexps '("*Packages*" . normal))
+
+  (with-eval-after-load 'package
+    ;; movement keys j,k,l,h set up for free by defaulting to normal mode.
+    ;; mark, unmark, install
+    (evil-define-key 'normal package-menu-mode-map (kbd "m") #'package-menu-mark-install)
+    (evil-define-key 'normal package-menu-mode-map (kbd "u") #'package-menu-mark-unmark)
+    (evil-define-key 'normal package-menu-mode-map (kbd "x") #'package-menu-execute)))
