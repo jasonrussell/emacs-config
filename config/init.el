@@ -35,6 +35,10 @@
   :ensure t
   :init
   :config
+  (define-key evil-normal-state-map (kbd "TAB") nil)
+  (define-key evil-normal-state-map [tab] nil)
+  (define-key evil-motion-state-map (kbd "TAB") nil)
+  (define-key evil-motion-state-map [tab] nil)
   (evil-mode 1))
 
 (use-package evil-magit
